@@ -28,7 +28,7 @@ Route::bind('projects', function($value, $route) {
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return Redirect::to('projects');
 });
 Route::resource('projects', 'ProjectsController');
 Route::resource('projects.tasks', 'TasksController');
