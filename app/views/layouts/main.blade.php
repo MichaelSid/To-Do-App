@@ -25,6 +25,11 @@
 					<p>{{ Session::get('message') }}</p>
 				</div>
 			@endif
+			@if ($errors->any())
+				<ul>
+					{{ implode('', $errors->all('<li class="error">:message</li>')) }}
+				</ul>
+			@endif
  
 			@yield('main')
 		</div>
