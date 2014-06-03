@@ -27,7 +27,7 @@ class CreateProjectsTable extends Migration {
 			$table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
 			$table->string('name');
 			$table->string('slug');
-			$table->boolean('completed');
+			$table->boolean('completed')->default(false);
 			$table->text('description');
 			$table->timestamps();
 		});
@@ -40,9 +40,9 @@ class CreateProjectsTable extends Migration {
 	 * @return void
 	 */
 	public function down()
-	{
-		Schema::drop('projects');
+	{		
 		Schema::drop('tasks');
+		Schema::drop('projects');
 	}
 
 }

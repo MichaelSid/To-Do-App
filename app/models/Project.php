@@ -1,16 +1,15 @@
 <?php
 
-class Project extends \Eloquent {
-	protected $guarded = [];
-	
-	public function tasks()
-	{
-		return $this->hasMany('Task');
-	}
-
-	public static $rules = array(
-		'name'			=> 'required|min:4',
-		'slug'			=> 'required',
+class Project extends LaravelBook\Ardent\Ardent {
+	public static $relationsData = array(
+		'tasks' => array(self::HAS_MANY, 'Task'),
 	);
 
+	protected $fillable = ['name', 'slug'];
+
+	public static $sluggable = array();
+
+	public static $rules = array(
+		'name'			=> 'required|min:4'
+	);
 }
